@@ -1,0 +1,336 @@
+/* Card Section Styles */
+.card-section {
+    position: relative;
+    width: 100%;
+    min-height: 1100vh; /* Increased from 500vh for slower scroll */
+    padding-top: 60px;
+    padding-bottom: 0;
+}
+
+/* Heading Styles */
+.card-heading-container {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.card-main-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.card-heading-accent {
+    color: #b8d942;
+}
+
+.card-sticky-container {
+    position: sticky;
+    top: 5vh;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: visible;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 0;
+}
+
+.card-content-wrapper {
+    position: relative;
+    width: 380px;
+    height: 420px;
+}
+
+.card-item {
+    position: absolute;
+    background-color: transparent;
+    inset: 0;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    will-change: transform, opacity;
+    width: 380px;
+    height: 420px;
+}
+
+.card-image-inner {
+    width: 380px;
+    height: 420px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    min-width: 380px;
+    min-height: 420px;
+    object-fit: cover;
+    object-position: center;
+    border: 3px solid #b8d942;
+    border-radius: 0.75rem;
+}
+
+/* Centered Image Below Cards */
+.journey-center-image1 {
+    position: relative;
+    margin-top: 2rem;
+    z-index: 1000;
+    text-align: center;
+}
+
+.journey-center-image1 img {
+    width: 4.5rem;
+    height: auto;
+}
+
+/* Year Display */
+.journey-year-display1 {
+    text-align: center;
+    margin-top: 1.5rem;
+    z-index: 1000;
+    position: relative;
+}
+
+.journey-year1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #b8d942;
+    transition: all 0.3s ease;
+}
+
+/* Description Section */
+.journey-description-section1 {
+    max-width: 90%;
+    margin: 1rem auto 0;
+    padding: 0;
+    z-index: 1000;
+    position: relative;
+}
+
+.journey-description1 {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #ffffff;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Responsive Styles */
+
+/* sm: 640px and up */
+@media (min-width: 640px) {
+    .card-section {
+        min-height: 1100vh; /* Increased from 500vh */
+        padding-bottom: 0;
+    }
+
+    .card-heading-container {
+        padding: 50px 20px;
+    }
+
+    .card-main-heading {
+        font-size: 3rem;
+    }
+
+    .card-sticky-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        height: 90vh;
+    }
+
+    .card-content-wrapper {
+        width: 450px;
+        height: 480px;
+    }
+
+    .card-item {
+        width: 450px;
+        height: 480px;
+        border-radius: 1rem;
+    }
+
+    .card-image-inner {
+        width: 450px;
+        height: 480px;
+        border-radius: 1rem;
+    }
+
+    .card-image {
+        min-width: 450px;
+        min-height: 480px;
+        border-radius: 1rem;
+        border-width: 3px;
+    }
+
+    .journey-center-image1 {
+        margin-top: 2rem;
+    }
+
+    .journey-center-image1 img {
+        width: 5rem;
+    }
+
+    .journey-year-display1 {
+        margin-top: 1.5rem;
+    }
+
+    .journey-year1 {
+        font-size: 3.5rem;
+    }
+
+    .journey-description-section1 {
+        margin-top: 1rem;
+    }
+
+    .journey-description1 {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+/* md: 768px and up */
+@media (min-width: 768px) {
+    .card-section {
+        min-height: 1100vh; /* Increased from 500vh */
+        padding-bottom: 0;
+    }
+
+    .card-main-heading {
+        font-size: 3.5rem;
+    }
+
+    .card-content-wrapper {
+        width: 500px;
+        height: 520px;
+    }
+
+    .card-item {
+        width: 500px;
+        height: 520px;
+    }
+
+    .card-image-inner {
+        width: 500px;
+        height: 520px;
+    }
+
+    .card-image {
+        min-width: 500px;
+        min-height: 520px;
+    }
+
+    .journey-center-image1 {
+        margin-top: 2.5rem;
+    }
+
+    .journey-center-image1 img {
+        width: 6rem;
+    }
+
+    .journey-year-display1 {
+        margin-top: 2rem;
+    }
+
+    .journey-year1 {
+        font-size: 4rem;
+    }
+
+    .journey-description-section1 {
+        max-width: 600px;
+        margin-top: 1.5rem;
+    }
+
+    .journey-description1 {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+/* lg: 1024px and up */
+@media (min-width: 900px) {
+    .card-section {
+        display: none;
+    }
+}
+
+/* Mobile optimization */
+@media (max-width: 480px) {
+    .card-section {
+        min-height: 1100vh; /* Increased from 500vh */
+        padding-top: 40px;
+        padding-bottom: 0;
+    }
+
+    .card-heading-container {
+        padding: 0px 15px;
+    }
+
+    .card-main-heading {
+        font-size: 2rem;
+    }
+
+    .card-sticky-container {
+        top: 8vh;
+        height: 85vh;
+        margin-bottom: 0;
+    }
+
+    .card-content-wrapper {
+        width: 320px;
+        height: 380px;
+        text-align: center;
+    }
+
+    .card-item {
+        width: 320px;
+        height: 380px;
+    }
+
+    .card-image-inner {
+        width: 320px;
+        height: 380px;
+    }
+
+    .card-image {
+        min-width: 320px;
+        min-height: 380px;
+        border-width: 2px;
+    }
+
+    .journey-center-image1 {
+        margin-top: 1.5rem;
+    }
+
+    .journey-center-image1 img {
+        width: 4.5rem;
+    }
+
+    .journey-year-display1 {
+        margin-top: 1rem;
+    }
+
+    .journey-year1 {
+        font-size: 2.5rem;
+    }
+
+    .journey-description-section1 {
+        margin-top: 0.8rem;
+        max-width: 95%;
+    }
+
+    .journey-description1 {
+        font-size: 0.75rem;
+        line-height: 1.4;
+    }
+}

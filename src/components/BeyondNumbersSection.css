@@ -1,0 +1,395 @@
+/* Beyond Numbers Section - Fully Responsive */
+
+.beyond-numbers-section {
+  padding: 120px 20px;
+  background: var(--bg-dark);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.beyond-numbers-section .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.beyond-header {
+  text-align: center;
+  margin-bottom: 80px;
+  padding: 0 16px;
+}
+
+.sidebar-title {
+  text-align: left;
+}
+
+.sidebar-text {
+  text-align: left;
+}
+
+.beyond-content {
+  padding: 0 16px;
+}
+
+.beyond-header h2 {
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-white, #ffffff);
+}
+
+.beyond-header .accent {
+  color: var(--accent-green, #c4ff61);
+}
+
+.beyond-content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 80px;
+  align-items: start;
+}
+
+.dropdowns-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.dropdown-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-gray, rgba(255, 255, 255, 0.1));
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.dropdown-item:hover {
+  border-color: var(--accent-green, #c4ff61);
+}
+
+.dropdown-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  background: none;
+  border: none;
+  color: var(--text-white, #ffffff);
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.dropdown-header:hover {
+  background: rgba(196, 255, 97, 0.05);
+}
+
+.dropdown-header.active {
+  background: rgba(196, 255, 97, 0.1);
+  color: var(--accent-green, #c4ff61);
+}
+
+.not-active {
+  display: block;
+}
+
+.active-mobile1 {
+  display: none;
+}
+
+.dropdown-title {
+  text-align: left;
+  flex: 1;
+}
+
+.dropdown-icon {
+  color: var(--accent-green, #c4ff61);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(196, 255, 97, 0.1);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.dropdown-header.active .dropdown-icon {
+  background: var(--accent-green, #c4ff61);
+  color: var(--bg-dark, #000000);
+}
+
+.dropdown-content {
+  overflow: hidden;
+}
+
+.dropdown-inner {
+  padding: 0 32px 24px 32px;
+}
+
+.dropdown-inner p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-gray, #a0a0a0);
+  margin: 0;
+}
+
+.beyond-sidebar {
+  position: sticky;
+  top: 120px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-gray, rgba(255, 255, 255, 0.1));
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  width: 100%;
+}
+
+.sidebar-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  color: var(--text-white, #ffffff);
+}
+
+.sidebar-accent {
+  color: var(--accent-green, #c4ff61);
+}
+
+.sidebar-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-gray, #a0a0a0);
+  margin-bottom: 28px;
+}
+
+.eligibility-link {
+  display: inline-block;
+  color: var(--accent-green, #c4ff61);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid var(--accent-green, #c4ff61);
+  padding-bottom: 2px;
+}
+
+.eligibility-link:hover {
+  color: var(--accent-green-hover, #d4ff81);
+  opacity: 0.8;
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .beyond-numbers-section {
+    padding: 100px 20px;
+  }
+
+  .beyond-content {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .beyond-sidebar {
+    position: relative;
+    top: 0;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .beyond-header h2 {
+    font-size: 36px;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .beyond-numbers-section {
+    padding: 60px 16px;
+  }
+
+  .beyond-header {
+    margin-bottom: 50px;
+  }
+
+  .beyond-header h2 {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  .beyond-content {
+    gap: 40px;
+  }
+
+  .dropdowns-container {
+    gap: 12px;
+  }
+
+  .dropdown-item {
+    border-radius: 10px;
+  }
+
+  .dropdown-header {
+    padding: 18px 20px;
+    font-size: 17px;
+  }
+
+  .dropdown-icon {
+    width: 28px;
+    height: 28px;
+    margin-left: 12px;
+  }
+
+  .dropdown-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .dropdown-inner {
+    padding: 0 20px 18px 20px;
+  }
+
+  .dropdown-inner p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .beyond-sidebar {
+    padding: 30px 24px;
+    border-radius: 16px;
+    max-width: 100%;
+  }
+
+  .sidebar-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .sidebar-text {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .eligibility-link {
+    font-size: 14px;
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+  .beyond-numbers-section {
+    padding: 0px 0px;
+  }
+
+
+  .beyond-header {
+    text-align: left;
+    margin-bottom: 40px;
+  }
+
+  .not-active {
+    display: none;
+  }
+
+  .active-mobile1 {
+    display: block;
+  }
+
+  .beyond-header h2 {
+    font-size: 32px;
+    line-height: 1.35;
+  }
+
+  .beyond-content {
+    gap: 35px;
+  }
+
+  .dropdowns-container {
+    gap: 10px;
+  }
+
+  .dropdown-header {
+    padding: 16px 18px;
+    font-size: 16px;
+  }
+
+  .dropdown-icon {
+    width: 26px;
+    height: 26px;
+    margin-left: 10px;
+  }
+
+  .dropdown-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .dropdown-inner {
+    padding: 0 18px 16px 18px;
+  }
+
+  .dropdown-inner p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .beyond-sidebar {
+    padding: 24px 20px;
+  }
+
+  .sidebar-title {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+
+  .sidebar-text {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .eligibility-link {
+    font-size: 14px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 360px) {
+  .beyond-numbers-section {
+    padding: 0px 0px;
+  }
+
+  .beyond-header h2 {
+    font-size: 28px;
+  }
+
+  .dropdown-header {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .dropdown-inner p {
+    font-size: 12px;
+  }
+
+  .beyond-sidebar {
+    padding: 20px 16px;
+  }
+
+  .sidebar-title {
+    font-size: 18px;
+  }
+
+  .sidebar-text {
+    font-size: 13px;
+  }
+}
