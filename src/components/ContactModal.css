@@ -138,3 +138,252 @@
     height: 36px;
   }
 }
+
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.modal-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #0d0d0d 0%, #080808 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.modal-header-block {
+  margin-bottom: 24px;
+}
+
+.modal-eyebrow {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(24, 243, 197, 0.08);
+  color: #18f3c5;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.modal-header-block h2 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.modal-subtext {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 10px;
+  color: #f5f5f5;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #111111;
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.34);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #18f3c5;
+  box-shadow: 0 0 0 4px rgba(24, 243, 197, 0.12);
+}
+
+.form-group textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.phone-field-container {
+  width: 100%;
+}
+
+.phone-field {
+  width: 100% !important;
+  height: 56px !important;
+  border-radius: 16px !important;
+  background: #111111 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  padding-left: 68px !important;
+  font-size: 15px !important;
+  box-shadow: none !important;
+}
+
+.phone-field:focus {
+  border-color: #18f3c5 !important;
+  box-shadow: 0 0 0 4px rgba(24, 243, 197, 0.12) !important;
+}
+
+.phone-flag-button {
+  background: #111111 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-right: none !important;
+  border-radius: 16px 0 0 16px !important;
+}
+
+.phone-dropdown {
+  background: #111111 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 14px !important;
+}
+
+.react-tel-input .country-list .country {
+  background: #111111 !important;
+  color: #ffffff !important;
+}
+
+.react-tel-input .country-list .country:hover,
+.react-tel-input .country-list .country.highlight {
+  background: #1b1b1b !important;
+}
+
+.react-tel-input .search {
+  background: #111111 !important;
+}
+
+.react-tel-input .search-box {
+  width: calc(100% - 20px) !important;
+  margin: 10px !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: #0f0f0f !important;
+  color: #ffffff !important;
+}
+
+.has-error {
+  border-color: #ff5c5c !important;
+}
+
+.error-text {
+  margin: 8px 0 0;
+  color: #ff6b6b;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.modal-submit-button {
+  margin-top: 4px;
+  width: 100%;
+  height: 56px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #18f3c5 0%, #546dc4 100%);
+  color: #04110f;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 30px rgba(24, 243, 197, 0.16);
+}
+
+.modal-submit-button:hover {
+  transform: translateY(-1px);
+}
+
+.modal-submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 16px;
+  }
+
+  .modal-card {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .modal-header-block h2 {
+    font-size: 28px;
+  }
+
+  .phone-field {
+    height: 52px !important;
+  }
+
+  .modal-submit-button {
+    height: 52px;
+  }
+}

@@ -1,110 +1,169 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
+import validator from 'validator';
 import './ContactSection.css';
 import ThankYouModal from './ThankYouModal';
-// hi
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
     subject: '',
-    message: ''
+    message: '',
   });
-  const [isHovering, setIsHovering] = useState(false);
-  const [subscribeEmail, setSubscribeEmail] = useState('');
+
+  const [phone, setPhone] = useState('');
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
   const [submittedName, setSubmittedName] = useState('');
+
+  const [mapUrl] = useState(
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.907102065628!2d78.0790013!3d30.3632038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfed3e9da3e6ede1%3A0x74003a599d04e8eb!2sAcademically%20Global!5e0!3m2!1sen!2sin!4v1557582321874'
+  );
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) newErrors.name = 'Full name is required';
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!validator.isEmail(formData.email.trim())) {
+      newErrors.email = 'Enter a valid email address';
+    }
+
+    if (!phone || phone.replace(/\D/g, '').length < 8) {
+      newErrors.phone = 'Enter a valid phone number';
+    }
+
+    if (!formData.subject.trim()) newErrors.subject = 'Subject is required';
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: '',
+    }));
+  };
+
+  const handlePhoneChange = (value) => {
+    setPhone(value ? `+${value}` : '');
+    setErrors((prev) => ({
+      ...prev,
+      phone: '',
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+
+    const payload = {
+      ...formData,
+      phone,
+    };
+
     try {
       const response = await fetch('https://pharmlly.com/api/portfolio', {
-        method: 'POST', // HTTP method
+        method: 'POST',
         headers: {
-          'Content-Type': 'application/json' // Specify JSON format
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData), // Send form data as JSON
-        credentials: 'omit', // Include credentials if needed
+        body: JSON.stringify(payload),
       });
 
-
-      if (response.status === 200 || response.status === 201) {
-        const data = await response.json();
-        console.log('Response from backend:', data);
-
-        // Capture name for personalized thank you
+      if (response.ok) {
+        await response.json();
         setSubmittedName(formData.name);
         setShowThankYou(true);
 
-        // Reset form data
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+        setPhone('');
+        setErrors({});
       } else {
-        console.log('Failed to send message');
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        console.error('Failed to send message');
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      setFormData({ fullName: '', email: '', subject: '', message: '' });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    // Here you would integrate with LSQ (LeadSquared)
-    console.log('Subscribe:', subscribeEmail);
-    alert('Subscribed successfully!');
-    setSubscribeEmail('');
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-  const [mapUrl] = useState("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.907102065628!2d78.0790013!3d30.3632038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfed3e9da3e6ede1%3A0x74003a599d04e8eb!2sAcademically%20Global!5e0!3m2!1sen!2sin!4v1557582321874");
-
   return (
     <section id="contact" className="contact-section">
-      <div className="container">
+      <div className="contact-shell">
         <div className="contact-grid">
-          {/* Contact Form */}
           <motion.div
-            className="contact-form-wrapper"
+            className="contact-info-card"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <h2>Contact</h2>
-            <div className="contact-info">
-              <div className="info-item">
-                <p className="label">India:</p>
-                <p className="value">Plot A2, IT Park, Sahastradhara Rd, Doon IT Park, Sidcul, Dehradun, Uttarakhand 248001</p>
+            <p className="contact-eyebrow">Get in touch</p>
+            <h2 className="contact-title">Let’s build something meaningful together</h2>
+            <p className="contact-subtitle">
+              Reach out for collaborations, speaking, consulting, or general enquiries
+            </p>
+
+            <div className="contact-info-list">
+              <div className="info-block">
+                <span>India Office</span>
+                <p>
+                  Plot A2, IT Park, Sahastradhara Rd, Doon IT Park, Sidcul,
+                  Dehradun, Uttarakhand 248001
+                </p>
               </div>
-              <div className="info-item">
-                <p className="label">Australia:</p>
-                <p className="value">Suite 207A/30 Campbell St, Blacktown NSW 2148W 2148Park,</p>
+
+              <div className="info-block">
+                <span>Australia Office</span>
+                <p>Suite 207A/30 Campbell St, Blacktown NSW 2148</p>
               </div>
-              <div className="contact-details">
+
+              <div className="info-inline">
                 <div>
-                  <p className="label">Mail</p>
-                  <a href="mailto:ceo@academically.com" >ceo@academically.com</a>
+                  <span>Email</span>
+                  <a href="mailto:ceo@academically.com">ceo@academically.com</a>
                 </div>
                 <div>
-                  <p className="label">Phone no</p>
+                  <span>Phone</span>
                   <a href="tel:+918071722349">+91 8071722349</a>
                 </div>
               </div>
             </div>
-            <div className="map-placeholder">
+
+            <div className="map-wrap">
               <iframe
                 src={mapUrl}
                 width="100%"
-                height="180"
+                height="220"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
@@ -114,93 +173,109 @@ const ContactSection = () => {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
-            className="form-container"
+            className="contact-form-card"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label>Full Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
+            <div className="form-heading">
+              <h3>Send a message</h3>
+              <p>I usually reply as soon as possible</p>
+            </div>
+
+            <form onSubmit={handleSubmit} noValidate className="modern-form">
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="name">Full Name</label>
+                  <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Enter your full name"
+                    className={errors.name ? 'has-error' : ''}
+                  />
+                  {errors.name && <p className="error-text">{errors.name}</p>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="email">Email Address</label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Enter your email"
+                    className={errors.email ? 'has-error' : ''}
+                  />
+                  {errors.email && <p className="error-text">{errors.email}</p>}
+                </div>
               </div>
 
               <div className="form-group">
-                <label>Email Address</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
+                <label htmlFor="phone">Phone Number</label>
+                <PhoneInput
+                  country="in"
+                  value={phone.replace('+', '')}
+                  onChange={handlePhoneChange}
+                  enableSearch
+                  countryCodeEditable={false}
+                  placeholder="Enter your phone number"
+                  containerClass="phone-field-container"
+                  inputClass={`phone-field ${errors.phone ? 'has-error' : ''}`}
+                  buttonClass="phone-flag-button"
+                  dropdownClass="phone-dropdown"
+                  inputProps={{
+                    name: 'phone',
+                    id: 'phone',
+                  }}
                 />
+                {errors.phone && <p className="error-text">{errors.phone}</p>}
               </div>
 
               <div className="form-group">
-                <label>Phone Number</label>
+                <label htmlFor="subject">Subject</label>
                 <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Subject</label>
-                <input
+                  id="subject"
                   type="text"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  required
+                  placeholder="What would you like to discuss?"
+                  className={errors.subject ? 'has-error' : ''}
                 />
+                {errors.subject && <p className="error-text">{errors.subject}</p>}
               </div>
 
               <div className="form-group">
-                <label>Message</label>
+                <label htmlFor="message">Message</label>
                 <textarea
+                  id="message"
                   name="message"
+                  rows="6"
                   value={formData.message}
                   onChange={handleChange}
-                  rows="4"
-                  required
+                  placeholder="Write your message here..."
+                  className={errors.message ? 'has-error' : ''}
                 />
+                {errors.message && <p className="error-text">{errors.message}</p>}
               </div>
 
-              <div
-                className="button-container"
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
-              >
-                <button className="cta-button" type="submit">
-                  Send Message
-                </button>
-                <button className="cta-button2" style={{ borderRadius: '100%', padding: '12px' }} type='submit'>
-                  <span className="button-icon">{isHovering ? '→' : '➚'}</span>
-                </button>
-              </div>
-              {/* <button type="submit" className="submit-button">
-                Send Message →
-              </button> */}
+              <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </button>
             </form>
           </motion.div>
         </div>
       </div>
 
-      <ThankYouModal 
-        isOpen={showThankYou} 
-        onClose={() => setShowThankYou(false)} 
+      <ThankYouModal
+        isOpen={showThankYou}
+        onClose={() => setShowThankYou(false)}
         name={submittedName}
       />
     </section>
