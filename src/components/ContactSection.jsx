@@ -1,22 +1,27 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import './ContactSection.css';
+import ThankYouModal from './ThankYouModal';
+// hi
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
+    phone: '',
     subject: '',
     message: ''
   });
   const [isHovering, setIsHovering] = useState(false);
   const [subscribeEmail, setSubscribeEmail] = useState('');
+  const [showThankYou, setShowThankYou] = useState(false);
+  const [submittedName, setSubmittedName] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://educafic.com/api/portfolio', {
+      const response = await fetch('https://pharmlly.com/api/portfolio', {
         method: 'POST', // HTTP method
         headers: {
           'Content-Type': 'application/json' // Specify JSON format
@@ -25,16 +30,20 @@ const ContactSection = () => {
         credentials: 'omit', // Include credentials if needed
       });
 
+
       if (response.status === 200 || response.status === 201) {
         const data = await response.json();
         console.log('Response from backend:', data);
 
+        // Capture name for personalized thank you
+        setSubmittedName(formData.name);
+        setShowThankYou(true);
 
         // Reset form data
-        setFormData({ fullName: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
       } else {
         console.log('Failed to send message');
-        setFormData({ fullName: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
       }
     } catch (error) {
       console.error('Error sending message:', error);
@@ -118,8 +127,8 @@ const ContactSection = () => {
                 <label>Full Name</label>
                 <input
                   type="text"
-                  name="fullName"
-                  value={formData.fullName}
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
                   required
                 />
@@ -131,6 +140,17 @@ const ContactSection = () => {
                   type="email"
                   name="email"
                   value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Phone Number</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
                   onChange={handleChange}
                   required
                 />
@@ -177,6 +197,12 @@ const ContactSection = () => {
           </motion.div>
         </div>
       </div>
+
+      <ThankYouModal 
+        isOpen={showThankYou} 
+        onClose={() => setShowThankYou(false)} 
+        name={submittedName}
+      />
     </section>
   );
 };

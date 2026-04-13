@@ -2,20 +2,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useState } from 'react';
 import './ContactModal.css';
+import ThankYouModal from './ThankYouModal';
 
 const ContactModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
+    phone: '',
     subject: '',
     message: ''
   });
+  const [showThankYou, setShowThankYou] = useState(false);
+  const [submittedName, setSubmittedName] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://educafic.com/api/portfolio', {
+      const response = await fetch('https://pharmlly.com/api/portfolio', {
         method: 'POST', // HTTP method
         headers: {
           'Content-Type': 'application/json' // Specify JSON format
@@ -29,11 +33,19 @@ const ContactModal = ({ isOpen, onClose }) => {
         console.log('Response from backend:', data);
 
         console.log('Message sent successfully!');
-        setFormData({ fullName: '', email: '', subject: '', message: '' });
+        
+        // Save name for personalization
+        setSubmittedName(formData.name);
+        
+        // Reset and close form modal
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
         onClose();
+
+        // Show thank you modal
+        setShowThankYou(true);
       } else {
         console.log('Failed to send message');
-        setFormData({ fullName: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
         onClose();
 
       }
@@ -51,9 +63,10 @@ const ContactModal = ({ isOpen, onClose }) => {
     });
   };
 
-  if (!isOpen) return null;
+  if (!isOpen && !showThankYou) return null;
 
   return (
+    <>
     <AnimatePresence>
       {isOpen && (
         <div className="modal-overlay">
@@ -82,8 +95,8 @@ const ContactModal = ({ isOpen, onClose }) => {
                 <label>Full Name</label>
                 <input
                   type="text"
-                  name="fullName"
-                  value={formData.fullName}
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
                   required
                 />
@@ -95,6 +108,17 @@ const ContactModal = ({ isOpen, onClose }) => {
                   type="email"
                   name="email"
                   value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Phone Number</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
                   onChange={handleChange}
                   required
                 />
@@ -130,6 +154,13 @@ const ContactModal = ({ isOpen, onClose }) => {
         </div>
       )}
     </AnimatePresence>
+
+    <ThankYouModal 
+      isOpen={showThankYou} 
+      onClose={() => setShowThankYou(false)} 
+      name={submittedName}
+    />
+    </>
   );
 };
 
