@@ -5,7 +5,7 @@ import Image2 from '../assets/jobslly-i.png';
 import Image3 from '../assets/Image3.png';
 import Image4 from '../assets/Image4.png';
 
-
+//hi
 const InitiativesSection = () => {
   const initiatives = [
     {
