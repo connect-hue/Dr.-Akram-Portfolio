@@ -11,13 +11,13 @@ const InitiativesSection = () => {
     {
       id: 1,
       title: 'Academically',
-      description: "Academically is a global platform helping healthcare aspirants succeed in licensure exams like AMC, OET/A, PLAB, USMLE, OSPAP, ADC, & more. With AI-driven mock tests, live classes, and vibrant peer groups, Academically makes global career success achievable.",
+      description: "<a href='https://academically.com' target='_blank' rel='noopener noreferrer'>Academically</a> is a global platform helping healthcare aspirants succeed in licensure exams like AMC, OET/A, PLAB, USMLE, OSPAP, ADC, & more. With AI-driven mock tests, live classes, and vibrant peer groups, Academically makes global career success achievable.",
       image: Image1
     },
     {
       id: 2,
       title: 'Jobslly',
-      description: "Every single individual deserves a high-paying job abroad. That's why I created Jobslly—a platform that connects healthcare aspirants with the best jobs available worldwide. There's a huge demand for healthcare workers across the globe, and you get paid handsome salaries too. We will help you with your Work Visa application and other formalities.",
+      description: "Every single individual deserves a high-paying job abroad. That's why I created <a href='https://jobslly.in' target='_blank' rel='noopener noreferrer'>Jobslly</a>—a platform that connects healthcare aspirants with the best jobs available worldwide. There's a huge demand for healthcare workers across the globe, and you get paid handsome salaries too. We will help you with your Work Visa application and other formalities.",
       image: Image2
     },
     {
@@ -29,7 +29,7 @@ const InitiativesSection = () => {
     {
       id: 4,
       title: 'Global Healthcare Scholarship Program',
-      description: "Every single individual deserves a high-paying job abroad. That's why I created Jobslly—a platform that connects healthcare aspirants with the best jobs available worldwide. There's a huge demand for healthcare workers across the globe, and you get paid handsome salaries too. We will help you with your Work Visa application and other formalities.",
+      description: "Every single individual deserves a high-paying job abroad. That's why I created <a href='https://jobslly.in' target='_blank' rel='noopener noreferrer'>Jobslly</a>—a platform that connects healthcare aspirants with the best jobs available worldwide. There's a huge demand for healthcare workers across the globe, and you get paid handsome salaries too. We will help you with your Work Visa application and other formalities.",
       image: Image4
     }
   ];
@@ -74,7 +74,7 @@ const InitiativesSection = () => {
                   </div>
                   <div className="initiative-content">
                     <h3 className="initiative-title">{initiative.title}</h3>
-                    <p className="initiative-description">{initiative.description}</p>
+                    <p className="initiative-description" dangerouslySetInnerHTML={{ __html: initiative.description }} />
                   </div>
                 </>
               )}
@@ -84,7 +84,7 @@ const InitiativesSection = () => {
                 <>
                   <div className="initiative-content">
                     <h3 className="initiative-title">{initiative.title}</h3>
-                    <p className="initiative-description">{initiative.description}</p>
+                    <p className="initiative-description" dangerouslySetInnerHTML={{ __html: initiative.description }} />
                   </div>
                   <div className="initiative-image">
                     <img src={initiative.image} alt={initiative.title} />
