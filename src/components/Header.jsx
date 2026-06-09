@@ -77,7 +77,7 @@ const Header = () => {
 
       <div className="jobslly-strip">
         <p>Find high paying jobs that value you - with Jobslly</p>
-        <a href="https://jobslly.com" target="_blank" rel="noopener noreferrer" className="jobslly-button">Click Here</a>
+        <a href="https://jobslly.in" target="_blank" rel="noopener noreferrer" className="jobslly-button">Click Here</a>
       </div>
     </div>
   );

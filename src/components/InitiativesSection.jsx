@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import './InitiativesSection.css';
 import Image1 from '../assets/Image1.png';
-import Image2 from '../assets/Image2.png';
+import Image2 from '../assets/jobslly-i.png';
 import Image3 from '../assets/Image3.png';
 import Image4 from '../assets/Image4.png';
 
