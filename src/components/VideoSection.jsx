@@ -21,7 +21,7 @@ const VideoSection = () => {
             <div className="video-placeholder">
               {/* Replace the image source with your actual image */}
               <a 
-                href="https://www.hotstar.com/in/shows/brands-of-tomorrow/1260147774/academically-med-ed-simplified/1271401000/watch" 
+                href="https://youtu.be/TE_HYU7G3zc?si=VhrgMOr4X6_sBY8_" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
