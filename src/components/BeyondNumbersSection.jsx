@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
 import './BeyondNumbersSection.css';
 
-const BeyondNumbersSection = () => {
+const BeyondNumbersSection = ({ onOpenScholarship }) => {
   const [expandedItem, setExpandedItem] = useState(null);
 
   const dataPoints = [
@@ -109,9 +109,18 @@ const BeyondNumbersSection = () => {
             <p className="sidebar-text">
               This program is for people like me, those who come from small towns, big dreams, and little means. No one should lose their future over a fee. That's the idea behind the scholarship.
             </p>
-            <a href="#" className="eligibility-link">
+            <button
+              type="button"
+              className="eligibility-link"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onOpenScholarship) {
+                  onOpenScholarship();
+                }
+              }}
+            >
               Claim your scholarship now →
-            </a>
+            </button>
           </motion.div>
         </div>
       </div>

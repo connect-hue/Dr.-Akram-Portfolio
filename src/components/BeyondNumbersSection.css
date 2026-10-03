@@ -173,17 +173,22 @@
 
 .eligibility-link {
   display: inline-block;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--accent-green, #c4ff61);
   color: var(--accent-green, #c4ff61);
+  font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  border-bottom: 1px solid var(--accent-green, #c4ff61);
-  padding-bottom: 2px;
+  padding: 0 0 2px 0;
+  cursor: pointer;
 }
 
 .eligibility-link:hover {
   color: var(--accent-green-hover, #d4ff81);
+  border-bottom-color: var(--accent-green-hover, #d4ff81);
   opacity: 0.8;
 }
 

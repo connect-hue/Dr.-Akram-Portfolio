@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import './InitiativesSection.css';
 import Image1 from '../assets/Image1.png';
 import Image2 from '../assets/jobslly-i.png';
-import Image3 from '../assets/Image3.png';
 import Image4 from '../assets/Image4.png';
 
 //hi
@@ -22,12 +21,6 @@ const InitiativesSection = () => {
     },
     {
       id: 3,
-      title: 'Educafic',
-      description: 'Educafic by Academically is a study abroad vertical where we help students achieve their dreams of studying in colleges and universities abroad. Whether you want to pursue MBBS, Dentistry, Physiotherapy, or MBA in healthcare management or an MPH course, we will help you with college applications, documentation, and everything that will help you get admission in your dream college abroad. USA, Georgia, Russia, UK, Australia- whatever your dream country is, we will help you fulfill your study abroad dreams.',
-      image: Image3
-    },
-    {
-      id: 4,
       title: 'Global Healthcare Scholarship Program',
       description: "Every single individual deserves a high-paying job abroad. That's why I created <a href='https://jobslly.in' target='_blank' rel='noopener noreferrer'>Jobslly</a>—a platform that connects healthcare aspirants with the best jobs available worldwide. There's a huge demand for healthcare workers across the globe, and you get paid handsome salaries too. We will help you with your Work Visa application and other formalities.",
       image: Image4

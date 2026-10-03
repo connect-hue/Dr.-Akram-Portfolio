@@ -21,7 +21,7 @@ const ContactSection = () => {
   const [submittedName, setSubmittedName] = useState('');
 
   const [mapUrl] = useState(
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.907102065628!2d78.0790013!3d30.3632038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfed3e9da3e6ede1%3A0x74003a599d04e8eb!2sAcademically%20Global!5e0!3m2!1sen!2sin!4v1557582321874'
+ 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3442.521532485348!2d78.08532267489066!3d30.364545203334718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3908d7ff70027383%3A0x6412e1d2431ac05b!2sAcademically%20Global%20Dehradun!5e0!3m2!1sen!2sin!4v1791010340120!5m2!1sen!2sin'
   );
 
   const validateForm = () => {
